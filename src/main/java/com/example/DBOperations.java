@@ -10,7 +10,7 @@ public class DBOperations {
     public Connection getConnection()throws SQLException{
         String url = "jdbc:mysql://localhost:3306/practice";
         String user = "root";
-        String password = "Henlo@123";
+        String password = "ylo@123";
         return DriverManager.getConnection(url,user,password);
     }
 
