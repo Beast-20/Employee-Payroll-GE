@@ -202,6 +202,28 @@ GROUP BY gender;
 SELECT gender,COUNT(id) FROM employee_payroll
 GROUP BY gender;
 
+CREATE TABLE payroll_details(
+     emp_id INT NOT NULL,
+     payroll_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+     basic_pay DOUBLE,
+     deductions DOUBLE,
+     taxable_pay double,
+     income_tax double,
+     net_pay double,
+     foreign key(emp_id) references employee_payroll(id) on delete cascade
+     
+);
+
+INSERT INTO payroll_details(emp_id,basic_pay,deductions,taxable_pay,income_tax,net_pay)
+      SELECT id,basic_pay,deductions,taxable_pay,income_tax,net_pay from employee_payroll;
+      
+alter table employee_payroll
+drop basic_pay,
+drop deductions,
+drop taxable_pay,
+drop income_tax,
+drop net_pay;
+
 
 
 
